@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>go导航</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.gridly.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <ul class="layui-nav" lay-filter="topnav">
+            <li class="layui-nav-item item-right"><a href="javascript:;" class="register">注册</a></li>
+            <li class="layui-nav-item item-right">
+                <a href="javascript:;">蒋欣</a>
+                <dl class="layui-nav-child">
+                <dd><a href="">个人信息</a></dd>
+                <dd><a href="">修改密码</a></dd>
+                <dd><a href="">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="input-group">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <input type="text" name="url" placeholder="请输入" autocomplete="off" class="layui-input form-control">
+                    <button class="layui-btn" lay-submit lay-filter="search"><img src="https://www.baidu.com/favicon.ico">百度一下</button>
+                </div>
+            </form>
+        </div>
+        <div class="tile-grid">
+            <a class="tile-real" style="background-image: url(images/360.png)" href="https://hao.360.cn/" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">360导航</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/baidu.png)" href="https://www.baidu.com/" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">百度</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/defaultlogo.png)" href="" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">默认</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/go.png)" href="https://www.jd.com/" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">京东</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/google.png)" href="https://www.google.com.hk" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">谷歌</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/ifeng.png)" href="" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">凤凰</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/sohu.png)" href="" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">搜狐</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+            <a class="tile-real" style="background-image: url(images/wangyi.png)" href="" target="_blank" data-id="10">
+                <div class="tile-bar">
+                    <div class="tile-title">网易</div>
+                    <i class="layui-icon tile-edit" title="编辑">&#xe642;</i>
+                    <i class="layui-icon tile-remove" title="删除">&#x1006;</i>
+                </div>
+            </a>
+        </div>
+    </div> 
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="js/jquery.gridly.js"></script>
+    <script>
+        layui.use(['layer','form','element'], function(){
+            var layer = layui.layer,
+                form = layui.form(),
+                element = layui.element()
+
+            // 搜索
+            form.on('submit(search)', function (data) {
+                var val = data.field.url
+                window.location = 'http://www.baidu.com/s?wd=' + val
+                return false
+            })
+
+           $('.tile-real').bind('mouseover',function(){
+               $(this).fadeTo('fast',1) 
+               $(this).children('.tile-bar').fadeIn()
+            //    $(this).bind('mousedown',function(){
+            //        $(this).bind('mousemove',function(){
+            //            $(this).trigger('mouseleave') 
+            //        })
+            //    })
+            //     $(this).mouseup(function(){
+            //         $('.tile-real').bind('mouseover')
+            //     })
+           })
+           $('.tile-real').mouseleave(function(){
+               $(this).fadeTo('fast',0.8)
+               $(this).children('.tile-bar').fadeOut()
+           })
+
+            $(document).on('click','.tile-edit',function(e) {
+                e.preventDefault()
+                var val = $(this).siblings('.tile-title').text()
+                var url = $(this).closest('.tile-real').attr('href')
+                var id = $(this).closest('.tile-real').data('id')
+                layer.open({
+                    type: 1,
+                    area: ['400px'],
+                    title: '编辑网址',
+                    btn: ['确认'],
+                    content: '<p class="edit-url">\
+                                <label>标题：</label><input type="text" class="input-text" name="title" id="title" value="'+ val +'" data-id="'+ id +'">\
+                            </p>\
+                            <p class="edit-url">\
+                                <label>网址：</label><input type="text" class="input-text" name="url" id="url" required value="'+ url +'">\
+                            </p>',
+                    yes: function(){
+                        var data = {
+                            id: $('#title').data('id'),
+                            title: $('#title').val(),
+                            url: $('#url').val()
+                        }
+                        layer.load()
+                        $.post('',data,function(res){
+                            layer.closeAll('loading')
+                            if (res.state == 1){
+                                layer.msg(res.txt,{icon: 1,time:1000},function(){})
+                            }else{
+                                layer.msg(res.txt,{icon: 5})
+                            }
+                        })
+                    }
+                })
+           })
+            // 删除
+            $(document).on('click', '.tile-remove', function (e) {
+                e.preventDefault()
+                var id = $(this).closest('.tile-real').data('id')
+                layer.confirm('确认删除？', { icon: 3, title: '提示' }, function (index) {
+                    layer.close(index)
+                    layer.load()
+                    $.post(url, { id: id }, function (data) {
+                        layer.closeAll('loading')
+                        if (data.state == 1) {
+                            yt.msg(data.txt, function () {
+                                that.fn()
+                            })
+                        } else {
+                            yt.msg(data.txt, 'error')
+                        }
+                    })
+                })
+            })
+
+            $(document).on('click', '.register', function () {
+                layer.open({
+                    type: 2,
+                    area: ['500px', '800px'],
+                    scrollbar: false,
+                    fix: false,
+                    maxmin: true,
+                    shade: 0.4,
+                    title: '注册',
+                    content: '<form class="layui-form loginBox">\
+                                < div class="layui-form-item" >\
+                                <div class="layui-inline">\
+                                    <label class="layui-form-label">用户名：</label>\
+                                    <div class="layui-input-inline">\
+                                        <input type="text" class="layui-input" lay-verify="login_username" name="username" placeholder="请输入用户名">\
+                        </div>\
+                                    </div>\
+                                    <div class="layui-inline">\
+                                        <label class="layui-form-label">密码：</label>\
+                                        <div class="layui-input-inline">\
+                                            <input type="password" class="layui-input" lay-verify="login_password" name="password" placeholder="请输入密码">\
+                        </div>\
+                                        </div>\
+                                        <div class="layui-inline">\
+                                            <label class="layui-form-label">&nbsp;</label>\
+                                            <div class="layui-input-inline">\
+                                                <button class="layui-btn dialogBtn" lay-submit lay-filter="login">登&nbsp;陆</button>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                </form>'
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>
